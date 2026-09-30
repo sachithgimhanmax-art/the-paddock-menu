@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Paddock Menu | SpeedBay</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#121212;--card:#1c1c1c;--txt:#f4f4f4;--mut:#a9a9a9;--acc:#fdb515;--red:#e63b2e;--line:#2c2c2c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#121212}}
+html{scroll-padding-top:calc(60px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.4}
+header{text-align:center;padding:28px 16px 18px;background:repeating-linear-gradient(45deg,#161616 0 14px,#1b1b1b 14px 28px);border-bottom:4px solid var(--acc)}
+h1{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:56px;letter-spacing:2px;color:var(--acc);margin:0;line-height:1}
+.tag{font-style:italic;font-weight:700;margin:6px 0 0;color:var(--txt)}
+.tbl{display:inline-block;margin-top:12px;background:var(--red);color:#fff;font-weight:700;padding:4px 14px;border-radius:99px;font-size:14px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--line);scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{flex:none;color:var(--txt);text-decoration:none;font-family:'Bebas Neue',Impact,sans-serif;font-size:19px;letter-spacing:1px;padding:5px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card)}
+nav a:focus-visible,nav a:active{background:var(--acc);color:#111;outline:none}
+main{max-width:640px;margin:0 auto;padding:0 14px 30px}
+h2{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:34px;letter-spacing:1.5px;margin:30px 0 4px;color:var(--acc);border-left:5px solid var(--red);padding-left:10px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 6px 15px}
+.it{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.it h3{margin:0;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:23px;letter-spacing:.5px}
+.it p{margin:2px 0 0;color:var(--mut);font-size:14px}
+.pr{white-space:nowrap;font-weight:700;color:var(--txt);text-align:right;font-size:15px}
+.pr span{display:block}
+.b{display:inline-block;font-family:'Outfit',sans-serif;font-size:11px;font-weight:700;border-radius:99px;padding:1px 8px;margin-left:6px;vertical-align:middle;letter-spacing:.3px}
+.v{background:#2eaa4a;color:#fff}.c{background:var(--acc);color:#111}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:10px 16px 34px}
+</style>
+</head>
+<body>
+<header>
+<h1>The Paddock</h1>
+<p class="tag">Where flavours hit top gear!</p>
+<div class="tbl" id="tbl" hidden></div>
+</header>
+<nav id="nav"></nav>
+<main id="menu"></main>
+<footer>Prices include all applicable government taxes and service charge.<br>Follow us @speedbaylk @paddockrestaurant<br>T: +94 11 422 6000</footer>
+<script>
+var M=[
+["Salads","",[
+["Mixed Crispy Bowl","Crispy vegetable mix with salad dressing.","800","v"],
+["Smoked Chicken Salad","Strips of smoked chicken on a bed of greens, topped with honey yoghurt dressing.","1,100"],
+["Prawn Caesar Salad","Prawn tossed with dijon mustard, egg, greens and croutons.","1,500","c"]]],
+["Sandwiches","",[
+["Sandwich of Your Choice","Served with coleslaw and french fries.","","",["Tuna 1,400","Chicken 1,300","Beef 1,400","Cheese & tomato 1,300"]],
+["Veggie Victory Wrap","Greek salad wraps with baked beans, greens, tomatoes and olives.","1,200","v"],
+["Pit Lane Sub","A spectacular long bread sandwich with chicken roll, beef ham, tomato, onion, olives. Topped with melted cheese.","1,850"],
+["The Big Eater","","1,750"]]],
+["Burgers","Burger Magic",[
+["Trackside Duo","Beef and chicken pattie stacked to perfection.","2,700","c"],
+["Slaw & Order","Crispy chicken burger pattie with coleslaw and cheese.","1,800"],
+["The Cluck Cruiser","Grilled chicken burger pattie with fried egg and cheese.","1,850"],
+["The Pit Boss","Juicy beef burger pattie, topped with fried egg and cheese.","2,500"]]],
+["All-Day Dining","",[
+["Drift King Prawns","Batter fried prawns with french fries and chilli mayo.","2,900","c"],
+["Lap Leader Fried Chicken","Crispy butter-fried chicken with coleslaw and french fries.","1,600"],
+["Heatwave Omelette","Savoury chicken and cheese omelette with Sri Lankan spices tossed with mozzarella and cheddar cheese.","1,650"],
+["Pasta on the Fast Lane","Penne pasta served with seafood, tomato concassé and parmesan cheese.","2,600"],
+["Chicken Fried Rice","Egg fried rice served with chilli chicken, prawn crackers, fried egg and chilli paste.","1,550"],
+["Paddock Special","Basmati rice mixed with chicken, sausages, cuttlefish, prawns and peanuts, served with a fried egg, bockwurst sausage and hot chilli sauce.","2,300","c"],
+["Nasi Goreng","Accompanied with fried egg and prawn crackers.","","",["Seafood Nasi 1,950","Chicken Nasi 1,800"]],
+["Vegetable Chop Suey Rice","Vegetable fried rice topped with stir-fried veggies.","1,400","v"],
+["Herb Marinated Grilled Chicken Breast","Served with sticky rice and mixed salad.","2,400"],
+["Chicken Chow Mein","Chinese fried noodles with stir-fried chicken.","1,900"]]],
+["Sizzling","",[
+["Ultimate Grilled BBQ Sizzling","Grilled chicken breast, beef steaks, bockwurst sausages, chicken drumsticks, kochchi sausages, potato wedges and mixed salad.","9,600","c"],
+["Seafood Sizzling","Grilled jumbo prawns, grilled cuttlefish, spicy marinated barramundi fillet, fish sausages, potato wedges and mixed salad.","8,600"]]],
+["Desserts","",[
+["Cassata Tutti Fruity","Four layers of ice cream served on sponge pastry.","900"],
+["Double Trouble Mousse","Vanilla & chocolate mousse.","1,000"],
+["Stoplight Brownies","Classic brownie served with vanilla ice cream.","950","c"],
+["Speedy Scoop","Strawberry, chocolate, vanilla ice cream topped with blended sauce and nuts.","700"],
+["Ice Cream","Vanilla / Chocolate / Strawberry.","300"]]],
+["Snacks","",[
+["Chicken Nuggets","","650"],
+["Fish Chinese Rolls","","400"],
+["Chicken Chinese Rolls","","450"],
+["French Fries","","800"],
+["Cheesy Fries","","1,600"],
+["Savoury Cheese Toast","","1,600"],
+["Chicken Kochchi Bite","","800"],
+["Beef Samosa","","800"],
+["Mutton Samosa","","1,300"],
+["Skin Fried Potatoes","","1,450","v"],
+["Vegetable Spring Rolls","","500","v"],
+["Hot and Spicy Cashew Nuts","","2,000","v"]]],
+["Drinks","",[
+["Milkshakes","Chocolate | Strawberry | Vanilla | Mango","1,100"],
+["Mojito","Mango | Strawberry | Passion Fruit","1,000"],
+["SpeedBay Signature","","1,300"],
+["Hot & Flash","","700"],
+["Mint Cooler","","700"],
+["Water 500ml","","70"],
+["Sprite / Coca Cola / Fanta","","250"],
+["Red Bull","","900"],
+["Monster","","1,200"],
+["Yeti (3 flavours) / Hype Bam / Reignite","","500"],
+["Plain Tea","","120"],
+["Milk Tea","","300"],
+["Espresso","","400"],
+["Americano","","580"],
+["Cappuccino","","650"],
+["Cafe Macchiato","","800"],
+["Coffee Latte / Flat White","","750"]]]
+];
+var nav=document.getElementById('nav'),menu=document.getElementById('menu'),h='',n='';
+M.forEach(function(s,i){
+n+='<a href="#s'+i+'">'+s[0]+'</a>';
+h+='<section id="s'+i+'"><h2>'+s[0]+'</h2>'+(s[1]?'<p class="sub">'+s[1]+'</p>':'');
+s[2].forEach(function(t){
+var pr=t[4]?t[4].map(function(x){return '<span>'+x+'</span>'}).join(''):'<span>LKR '+t[2]+'</span>';
+if(t[4])pr=t[4].map(function(x){var k=x.lastIndexOf(' ');return '<span>'+x.slice(0,k)+' &nbsp;LKR '+x.slice(k+1)+'</span>'}).join('');
+h+='<div class="it"><div><h3>'+t[0]+(t[3]=='v'?'<span class="b v">VEG</span>':'')+(t[3]=='c'?'<span class="b c">CHEF\'S CHOICE</span>':'')+'</h3>'+(t[1]?'<p>'+t[1]+'</p>':'')+'</div><div class="pr">'+pr+'</div></div>';
+});
+h+='</section>';
+});
+nav.innerHTML=n;menu.innerHTML=h;
+try{var q=new URLSearchParams(location.search).get('table');if(q&&/^\d{1,2}$/.test(q)){var e=document.getElementById('tbl');e.textContent='Table '+q;e.hidden=false}}catch(x){}
+</script>
+</body>
+</html>
